@@ -75,4 +75,38 @@ function validAnagram(string1, string2){
     return true
 }
 
-console.log(validAnagram('azza', "zaza"))
+// console.log(validAnagram('azza', "zaza"))
+
+
+//teacher solution
+
+//this solution creates an object that keeps track of the letters in the first word and then
+//compares that with the second word. It uses only 2 loops where my solution above used 3  
+
+function teacherAnagram(first, second){
+    if(first.length !== second.length){
+        return false;
+    }
+    const lookUp ={}
+    
+    //loop through first word and make obj to track letter count
+    for(let i = 0; i < first.length; i++){
+        let letter = first[i];
+        lookUp[letter] ? lookUp[letter] += 1 : lookUp[letter] = 1;
+    }
+     console.log(lookUp)
+    for(let i = 0; i < second.length; i++){
+        let letter = second[i];
+        //can't find letter or letter is zero then it's not an anagram
+        if(!lookUp[letter]){
+           return false
+        }else{
+            //if you can find the letter subtract one from its value 
+            lookUp[letter] -=1;
+        }
+    }
+    console.log(lookUp)
+    return true
+}
+
+console.log(teacherAnagram('azzzza', "zaza"))
