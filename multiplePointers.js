@@ -35,4 +35,29 @@ function sumZeroPointers(arr){
         }
     }
 }
- console.log(sumZeroPointers([-4,-3,-2,-1,0,1,2,5]))
+//  console.log(sumZeroPointers([-4,-3,-2,-1,0,1,2,5]))
+
+ //implement a function called count unique values which accepts a sorted array, and couts the unique values in the array. There can be negative values in the array. but it will always be sorted 
+
+const countUniqueValues = (arr) =>{
+    if(arr.length === 0) return 0 
+    let point1 = 0
+    let point2 = 1
+    while(point2 < arr.length){
+        if (arr[point1] === arr[point2]){
+            point2++
+        }else{
+         point1++
+         arr[point1] = arr[point2]
+         point2++
+        }
+    }
+    return point1 + 1
+}
+ 
+ 
+console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]))
+
+// let test =[1,2,3,4]
+// test[1] = test[2]
+// console.log(test)
