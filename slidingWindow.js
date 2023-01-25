@@ -19,26 +19,47 @@ function maxSubarrayNested(arr, num){
         if(temp > max){
             max = temp;
         }
-        console.log(temp, max)
+        // console.log(temp, max)
     }
     return max
 }
 
-console.log(maxSubarrayNested([2,6,9,2,1,8,5,6,3], 3))
+// console.log(maxSubarrayNested([2,6,9,2,1,8,5,6,3], 3))
 
 
-
+//sliding window approach we calculate the sum the first time then simply subtract a number from the begining and add the next number on at the end. 
 function maxSubarraySum(arr, num){
+    //short circit for edge case
+    if (arr.length<num)return null;
+   
     let maxSum = 0; 
     let tempSum = 0; 
-    if (arr.length<num)return null;
+    //loop time find out itital sum 
     for(let i = 0; i<num; i++){
         maxSum += arr[i]
     }
-    tempSum = maxSum;
+    tempSum = maxSum
     for(let i = num; i < arr.lenght; i++){
-        tempSum = tempSum - arr[i-num] + arr[i];
+        tempSum += arr[i] - arr[i-num] ;
         maxSum = Math.max(maxSum, tempSum);
     }
     return maxSum;
 }
+
+// function maxSubarraySum(arr, num){
+//     if (arr.length < num) return null;
+ 
+//     let total = 0;
+//     for (let i=0; i<num; i++){
+//        total += arr[i];
+//     }
+//     let currentTotal = total;
+//     for (let i = num; i < arr.length; i++) {
+//        currentTotal += arr[i] - arr[i-num];
+//        total = Math.max(total, currentTotal);
+//     }
+//     return total;
+// }
+
+
+console.log(maxSubarraySum([100,200,300,400], 2))
