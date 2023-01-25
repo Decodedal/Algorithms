@@ -53,4 +53,24 @@ function power(num, pow){
   return num * power(num, pow -1)
 }
 
-console.log(power(2,4))
+// console.log(power(2,4))
+
+function arraySum(arr){
+    if (arr.length === 0) return 0
+    return arr[0] + arraySum(arr.slice(1))
+}
+
+// console.log(arraySum([1,2,3]))
+
+function productOfArray(arr){
+    if (arr.length === 0) return 1
+    return arr[0] * productOfArray(arr.slice(1))
+}
+// console.log(productOfArray([1,2,3,10]))
+
+function fib(num){
+    if(num <= 2) return 1;
+    return fib(num-1) + fib(num-2)
+  }
+
+  console.log(fib(28))
