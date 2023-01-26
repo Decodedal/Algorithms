@@ -73,4 +73,35 @@ function fib(num){
     return fib(num-1) + fib(num-2)
   }
 
-  console.log(fib(28))
+//   console.log(fib(28))
+
+function reverse(str){
+    let rev = [];
+    let arr = str.split("");
+    function revIt(str){
+         if(str.length === 0)return;
+         rev.push(str.pop())
+        return revIt(str);
+       
+    }
+    revIt(arr);
+    return rev.join("");
+}
+
+// console.log(reverse("dallas"))
+
+
+function isPalindrome(str){
+    let rev = [];
+    let arr = str.split("");
+    function revIt(str){
+         if(str.length === 0)return;
+         rev.push(str.pop())
+        return revIt(str);
+       
+    }
+    revIt(arr);
+    return (rev.join("") === str);
+  }
+
+  console.log(isPalindrome('tacocat'))
