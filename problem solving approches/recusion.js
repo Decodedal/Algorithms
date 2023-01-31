@@ -113,5 +113,19 @@ function someRecursive(arr, callback){
   }
 
   function flatten(arr){
-
+    let flattened = []
+    function makeArray(arr){
+        if (arr.length === 0)return 0
+        if(!Array.isArray(arr[0])){
+            flattened.push(arr[0])
+            return makeArray(arr.slice(1))
+        }else{
+            flattened.push(...arr[0])
+            return makeArray(arr.slice(1))
+        }
+    }
+    makeArray(arr)
+    return flattened
   }
+
+console.log(flatten([1, [2, [3, 4], [[5]]]]))

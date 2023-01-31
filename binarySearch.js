@@ -82,4 +82,19 @@ const binarySearchTakeTwo = (arr, num) =>{
     return middle;
 }
 
-console.log(binarySearchTakeTwo([2,5,6,9,13,15,28,30],31))
+// console.log(binarySearchTakeTwo([2,5,6,9,13,15,28,30],31))
+
+//binary search self test
+const secondBinary = (arr, num) =>{
+    let start = 0; 
+    let end = arr.length - 1;
+    let middle = Math.floor(( start + end )/ 2)
+    while(arr[middle] != num){
+        arr[middle] < num ? start = middle - 1 : end = middle + 1;
+        middle = Math.floor(( start + end )/ 2);
+        if(start > end) return - 1;
+    }
+    return middle;
+}
+
+console.log(secondBinary([1,3,5,7,9,11,22,33,44,66],22))
