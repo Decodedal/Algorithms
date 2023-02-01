@@ -58,4 +58,33 @@ function isString(str){
     return q
 }
 
-console.log(isString("hi"))
+// console.log(isString("hi"))
+ function bubbleSort(arr){
+    let noSwaps = true
+    for(let i = arr.length -1; i > 0; i--){
+        for(let j = 0; j < i - 1; j++){
+            if(arr[j] > arr[j+1]){
+                [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+                noSwaps = false
+            }
+        }
+        if(noSwaps) break;
+    }
+    return arr
+ }
+
+ console.log(bubbleSort([9,5,66,3,5,2,33,7,8]))
+
+ function binarySearch(arr, num){
+    start = 0;
+    end = arr.length - 1;
+    middle = Math.floor((start + end) / 2)
+    while(arr[middle] !== num && start < end){
+        num > arr[middle] ? start = middle + 1 : end = middle - 1;
+        middle = Math.floor((start + end) / 2)
+    }
+    if(arr[middle] !== num) return - 1;
+    return middle
+ }
+
+ console.log(binarySearch([1,2,3,4,5,6,7,8,9], 9))

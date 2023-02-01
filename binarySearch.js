@@ -92,9 +92,9 @@ const secondBinary = (arr, num) =>{
     while(arr[middle] != num){
         arr[middle] < num ? start = middle - 1 : end = middle + 1;
         middle = Math.floor(( start + end )/ 2);
-        if(start > end) return - 1;
+        if(arr[middle] !== num) return - 1;
     }
     return middle;
 }
 
-console.log(secondBinary([1,3,5,7,9,11,22,33,44,66],22))
+console.log(secondBinary([1,3,5,7,9,11,22,33,44,66],2))
