@@ -1,0 +1,25 @@
+selection sort: 
+
+this is a simple sorting method. with a time complexity of O(n^2) and a space complecity of O(1);
+we loop through an array and determine which is the lowest number and then swap it for the number at the begining. 
+This has to be done for every number in the array even if it is almost sorted already. 
+
+
+bubble sort:
+time complexity O(n^2) space complexity O(1)
+we loop through an array and compare each number to the one that comes after it. If the number that comes before is bigger 
+then we swap the two numbers untill we reach the end. at which point that number is locked in so the array we have to loop through is now one shorter.
+we can also keep track of wheather or not any numbers were swapped on a pass and if they werent then we can detemine the array is alreay in order and 
+we can return the sorted array. 
+
+selection sort: 
+
+time complexity O(n^2) space complexity O(1)
+breaks appart the loop into two parts sorted and unsorted. we start at the second number and compare it to the first and sort them. Then we move to the next number
+that has to find the right place at the front back or between the numbers and so on untill we reach the end of the loop. 
+
+mergeSort:
+
+time complexity O(n log n) space complecity O(n)
+take an array break it into progressivly smaller arrays until their is only one item in each array. Then we want to merge the sorted arrays on the left and right side layer by layer untill
+we are back to one full length array that is sorted. Recusion is a great tool to write this algorithem. 
