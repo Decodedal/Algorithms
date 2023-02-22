@@ -51,6 +51,15 @@ class SinglyLinkedList{
         current = current.next;
        } 
     }
+     get(index){
+       let current = this.head;
+       let i = 0 
+       while(index != i){
+        current = current.next;
+        i++
+       } 
+       console.log(current.val);
+    }
 
     pop(){
         if(!this.head)return undefined;
@@ -72,7 +81,26 @@ class SinglyLinkedList{
         return current;
         } 
     
+    shift(){
+        if(!this.head) return undefined 
+        let current = this.head 
+        this.head = current.next 
+        this.length-- 
+        if(this.length === 0) this.tail = null;
+        return current
+    }
 
+    unshift(val){
+        const newNode = new Node(val);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = this.tail;
+        }
+        newNode.next = this.head;
+        this.head = newNode
+        this.length++
+        return this
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -81,7 +109,22 @@ list.push("goodbye")
 list.push("I dont know why I say goodbye")
 list.push("I say hello")
 
+console.log(list)
+list.get()
 
 // list.pop()
 // list.pop()
-list.traverse()
+// list.shift()
+// list.unshift("new head")
+// list.traverse()
+
+
+//unshift psudo code 
+// no node? return undefined 
+// store the current head in a var
+//set the head the be the current head.next
+//this.length--
+//return valur of the node removed 
+
+//get method psudo code 
+//Takes an idex and returns the node value at that index 
