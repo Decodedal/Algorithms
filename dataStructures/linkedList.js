@@ -52,13 +52,23 @@ class SinglyLinkedList{
        } 
     }
      get(index){
+       if(index < 0 || index >= this.length) return null;
        let current = this.head;
        let i = 0 
-       while(index != i){
+       while(index !== i){
         current = current.next;
         i++
        } 
-       console.log(current.val);
+       return current;
+    }
+
+    set(index, val){
+    let foundNode = this.get(index);
+    if(foundNode){
+        foundNode.val = val;
+        return true;
+    }
+    return false
     }
 
     pop(){
@@ -109,8 +119,9 @@ list.push("goodbye")
 list.push("I dont know why I say goodbye")
 list.push("I say hello")
 
-console.log(list)
-list.get()
+list.set(2, "jelly bean")
+list.traverse()
+// list.get(3)
 
 // list.pop()
 // list.pop()
