@@ -111,16 +111,41 @@ class SinglyLinkedList{
         this.length++
         return this
     }
+    // !! just converts the return value to a bool 
+    insert(index, val){
+        if(index < 0 || index > this.length) return false;
+        if(index ===  this.length) return !! this.push(val);
+        if(index === 0) return !! this.unshift(val);
+        const newNode = new Node(val);
+        let prev = this.get(index - 1)
+        let target = prev.next;
+        prev.next = newNode;
+        newNode.next = target; 
+        this.length++;
+        return true;
+    }
+
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === this.length -1) return !! this.pop();
+        if(index === 0) return !! this.shift();
+        let prev = this.get(index -1);
+        let removed = prev.next;
+        prev.next = removed.next;
+        this.length--;
+        return removed;
+    }
 }
 
 let list = new SinglyLinkedList();
 list.push("hello");
-list.push("goodbye")
-list.push("I dont know why I say goodbye")
-list.push("I say hello")
+list.push("goodbye");
+list.push("I dont know why I say goodbye");
+list.push("I say hello");
 
-list.set(2, "jelly bean")
-list.traverse()
+list.insert(3, "jelly bean");
+list.remove(2);
+list.traverse();
 // list.get(3)
 
 // list.pop()
@@ -139,3 +164,9 @@ list.traverse()
 
 //get method psudo code 
 //Takes an idex and returns the node value at that index 
+
+// remove psudo code
+// <0 or > this.length return false
+// index == lengt -1 this.pop
+// index == 0, shift
+// get(index -1) set next to be next.next
