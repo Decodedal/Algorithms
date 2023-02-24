@@ -45,12 +45,16 @@ class SinglyLinkedList{
     } 
 
     traverse(){
+       let arr = []
        let current = this.head;
        while(current){
-        console.log(current.val);
+        arr.push(current.val);
         current = current.next;
        } 
+       console.log(arr)
     }
+
+
      get(index){
        if(index < 0 || index >= this.length) return null;
        let current = this.head;
@@ -135,17 +139,48 @@ class SinglyLinkedList{
         this.length--;
         return removed;
     }
+    
+    reverse(){
+        if(!this.head)return false
+        let prev = this.head;
+        let changePointer = prev.next;
+        [this.head, this.tail] = [this.tail, this.head]
+        for(let i = 1; i < this.length; i++){
+            let next = changePointer.next;
+            changePointer.next = prev;
+            prev = changePointer;
+            changePointer = next;
+        }
+        return this
+    }
+
+    coltReverse(){
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next;
+        let prev = null;
+        for(let i = 0; i < this.length; i++){
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
 }
 
 let list = new SinglyLinkedList();
-list.push("hello");
-list.push("goodbye");
-list.push("I dont know why I say goodbye");
-list.push("I say hello");
+list.push("1");
+list.push("2");
+list.push("3");
+list.push("4");
 
-list.insert(3, "jelly bean");
-list.remove(2);
+// list.insert(3, "jelly bean");
+// list.remove(2);
+list.coltReverse()
 list.traverse();
+
 // list.get(3)
 
 // list.pop()
