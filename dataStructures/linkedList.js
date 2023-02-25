@@ -140,19 +140,6 @@ class SinglyLinkedList{
         return removed;
     }
     
-    reverse(){
-        if(!this.head)return false
-        let prev = this.head;
-        let changePointer = prev.next;
-        [this.head, this.tail] = [this.tail, this.head]
-        for(let i = 1; i < this.length; i++){
-            let next = changePointer.next;
-            changePointer.next = prev;
-            prev = changePointer;
-            changePointer = next;
-        }
-        return this
-    }
 
     coltReverse(){
         let node = this.head;
