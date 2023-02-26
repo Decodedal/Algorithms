@@ -89,8 +89,8 @@ class DoublyLinkedList{
     }
 
     get(index){
-        if(index < 0 || index > this.lenght) return undefined;
-        const median = Math.floor(this.length/2)
+        if(index < 0 || index >= this.length) return null;
+        const median = this.length / 2;
         if(index <= median){
             let currentNode = this.head;
             for(let i = 0; i < index; i++){
@@ -99,22 +99,49 @@ class DoublyLinkedList{
             return currentNode;
         }else{
             let currentNode = this.tail;
-            for(let i = this.length; i > index; i--){
+            for(let i = this.length - 1; i > index; i--){
                 currentNode = currentNode.prev;
             }
             return currentNode;
         }
+    }
+
+    set(index, val){
+        if(index < 0 || index >= this.length) return undefined;
+        const target = this.get(index);
+        target.val = val;
+        return target        
+    }
+
+    insert(index, val){
+        if(index < 0 || index >= this.length)return undefined;
+        if(index ===  this.length) return !! this.push(val);
+        if(index === 0) return !! this.unshift(val);
+        const newNode = new Node(val);
+        const target = this.get(index);
+        let prev = target.prev;
+        prev.next = newNode;
+        target.prev = newNode;
+        newNode.next = target;
+        newNode.prev = prev;
+        this.length++;
+        return newNode;
     }
 }
 
 
 const doubley = new DoublyLinkedList()
 
+doubley.push("0");
 doubley.push("1");
 doubley.push("2");
 doubley.push("3");
-console.log(doubley.get(3))
+doubley.push("4");
+doubley.insert(2, "success")
+// doubley.set(10, "Dally do dads")
+
+// console.log(doubley.get(7))
 
 
 // console.log(doubley.length)
-// console.log(doubley.print())
+console.log(doubley.print())
