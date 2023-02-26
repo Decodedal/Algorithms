@@ -127,6 +127,20 @@ class DoublyLinkedList{
         this.length++;
         return newNode;
     }
+
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === this.length) return this.pop();
+        if(index === 0) return this.shift();
+        const target = this.get(index);
+        const prev = target.prev;
+        const next = target.next;
+        prev.next = next;
+        next.prev = prev;
+        this.length--;
+        return target;
+    }
+
 }
 
 
@@ -138,6 +152,7 @@ doubley.push("2");
 doubley.push("3");
 doubley.push("4");
 doubley.insert(2, "success")
+doubley.remove(-1)
 // doubley.set(10, "Dally do dads")
 
 // console.log(doubley.get(7))
