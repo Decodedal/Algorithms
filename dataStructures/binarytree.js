@@ -13,12 +13,11 @@ class BinarySearchTree{
             return this;
         }else{
             let currentNode = this.root;
-            let looper = true
-            while(looper) {
+            while(true) {
+                if(newNode.value === currentNode.value)return undefined;
                 if(newNode.value > currentNode.value){
                     if(!currentNode.right){
                         currentNode.right = newNode;
-                        looper = false;
                         return this;
                     }else{
                         currentNode = currentNode.right;
@@ -27,7 +26,6 @@ class BinarySearchTree{
                 if(newNode.value < currentNode.value){
                     if(!currentNode.left){
                         currentNode.left = newNode;
-                        looper = false;
                         return this;
                     }else{
                         currentNode = currentNode.left;
