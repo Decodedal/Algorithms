@@ -35,7 +35,23 @@ class BinarySearchTree{
         }
     }
 
+    // recursiveInsert(root, value){
+    //     if()
+    // }
 
+    find(value){
+        if(!this.root) return undefined;
+        let currentNode = this.root;
+        while(true){
+            if(currentNode.value === value) return currentNode;
+            if(currentNode.value > value){
+                currentNode = currentNode.left;
+            }else{
+                currentNode = currentNode.right;
+            }
+            if(!currentNode)return undefined;
+        }
+    }
 }
 
 //instead of a next and prev we have a left and right 
@@ -54,7 +70,7 @@ newTree.insert(7);
 newTree.insert(15);
 newTree.insert(3);
 
-console.log(newTree);
+console.log(newTree.find(2));
 //insanciating class
 //notice it is a pain to insert into the tree this way we will make a method to sort for use where a node should go 
 // let tree = new BinarySearchTree();
