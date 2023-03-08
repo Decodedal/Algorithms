@@ -1,6 +1,12 @@
-//creating the class structure for a binary search tree
+//this tree is not ordered in any particular way. In order to fully search 
+//You will have to visit every node in the tree
 
-//only important thing here is the root
+//BFS Breadth first search visting evry node on the same level before moving on to the next level 
+
+//DFS Following one node path all the way down to a leaf before moving on to any siblings 
+//approaches are pre order we start with the root node and add that to our arr of nodes
+//then we explore one side adding node to arr and then expolring its children 
+
 class BinarySearchTree{
     constructor(){
         this.root = null;
@@ -35,26 +41,33 @@ class BinarySearchTree{
         }
     }
 
-    // recursiveInsert(root, value){
-    //     if()
-    // }
-
-    find(value){
-        if(!this.root) return undefined;
-        let currentNode = this.root;
-        while(true){
-            if(currentNode.value === value) return currentNode;
-            if(currentNode.value > value){
-                currentNode = currentNode.left;
-            }else{
-                currentNode = currentNode.right;
-            }
-            if(!currentNode)return undefined;
+    bfs(){
+        let que = [];
+        let nodeList = [];
+        que.push(this.root);
+        // if(!this.head) return nodeList;
+        while(que.length){
+            let node = que.pop();
+            nodeList.push(node.value);
+            if(node.left) que.push(node.left);
+            if(node.right) que.push(node.right);
         }
+        return nodeList;
     }
+
+    DFSPreOrder(){
+        let nodeArr = [];
+        const traverse = (node) =>{
+            nodeArr.push(node);
+            if(node.left)traverse(node.left);
+            if(node.right)traverse(node.right);
+        }
+        traverse(this.root);
+        return nodeArr;
+    }
+
 }
 
-//instead of a next and prev we have a left and right 
 class Node{
     constructor(value){
         this.value = value;
@@ -69,28 +82,7 @@ newTree.insert(10);
 newTree.insert(7);
 newTree.insert(15);
 newTree.insert(3);
+newTree.insert(1);
+newTree.insert(17);
 
-console.log(newTree.find(2));
-//insanciating class
-//notice it is a pain to insert into the tree this way we will make a method to sort for use where a node should go 
-// let tree = new BinarySearchTree();
-// tree.root = new Node(10);
-// tree.root.right = new Node(15);
-// tree.root.left = new Node(7);
-// tree.root.left.right = new Node(9);
-
-// console.log(tree)
-
-//inserting a node psudo code
-//create a new node starting at the root check if a root exists
-//if their is a root check if the value of the new node is greater than or less than the value of the root 
-//if greater
-    //check to see if there is a node to the right 
-        //if there is, move to that node and repeat these steps 
-        //if not add that node as the right property
-//if is less 
-    //check to see if there is a node to the left
-        //if yes move to that node and repete these steps
-        //if there is not add that node as the left property
-        
-        
+console.log(newTree.DFSPreOrder())
