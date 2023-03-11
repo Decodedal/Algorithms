@@ -10,6 +10,11 @@
 //Post order we only visit a node after we explore its children
 //in order we explore half the childeren explore the parent then return and explore the right half
 
+//so whats the diffrence 
+//bfs will have more memory storage so if you have many nodes and not theat many layers might not be the best 
+
+//pre order is good for capturing a tree in order to reconstruct it later
+
 
 class BinarySearchTree{
     constructor(){
