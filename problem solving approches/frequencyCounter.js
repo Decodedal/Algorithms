@@ -1,6 +1,8 @@
 //Write a function called SAME which accepts two arrays. 
 //The function should return true if every value in the 
 //arry has it's corresponding value squared in the second array. The frequency of values must be the same.
+//
+
 
 //NAIVE SOLUTION Time complexity 0(n**2)
 function same (arr1, arr2){

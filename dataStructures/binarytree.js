@@ -7,6 +7,10 @@
 //approaches are pre order we start with the root node and add that to our arr of nodes
 //then we explore one side adding node to arr and then expolring its children 
 
+//Post order we only visit a node after we explore its children
+//in order we explore half the childeren explore the parent then return and explore the right half
+
+
 class BinarySearchTree{
     constructor(){
         this.root = null;
@@ -58,8 +62,30 @@ class BinarySearchTree{
     DFSPreOrder(){
         let nodeArr = [];
         const traverse = (node) =>{
-            nodeArr.push(node);
+            nodeArr.push(node.value);
             if(node.left)traverse(node.left);
+            if(node.right)traverse(node.right);
+        }
+        traverse(this.root);
+        return nodeArr;
+    }
+
+    DFSPostOrder(){
+        let nodeArr = [];
+        const traverse = (node) =>{
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            nodeArr.push(node.value)
+        }
+        traverse(this.root);
+        return nodeArr;
+    }
+
+    DFSInOrder(){
+        let nodeArr =[];
+        const traverse = (node) =>{
+            if(node.left) traverse(node.left);
+            nodeArr.push(node.value);
             if(node.right)traverse(node.right);
         }
         traverse(this.root);
@@ -85,4 +111,7 @@ newTree.insert(3);
 newTree.insert(1);
 newTree.insert(17);
 
+// console.log(newTree.DFSPreOrder())
 console.log(newTree.DFSPreOrder())
+console.log(newTree.DFSPostOrder())
+console.log(newTree.DFSInOrder())
