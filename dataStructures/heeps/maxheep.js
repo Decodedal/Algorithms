@@ -42,6 +42,46 @@ class maxHeep{
                 childIdx = parentIdx;
         }
     }    
+
+    extractMax(){
+        let max = this.values[0]
+        let newRoot = this.values.pop();
+        if(this.values.length > 0){
+        this.values[0] = newRoot;
+        this.sinkDown()
+        }
+        return max
+    }
+
+    sinkDown(){
+        //if there is a left or a right that is greater then the root swap the root with the greater element 
+        let idx = 0;
+        let element = this.values[idx]; 
+        const length = this.values.length;
+         while(true){
+            let leftChildIdx = (idx * 2) + 1
+            let rightChildIdx = (idx * 2) + 2
+            let leftChild, rightChild;
+            let swap = null
+            if(leftChildIdx < length){
+            leftChild = this.values[leftChildIdx];
+            if(leftChild > element){
+                swap = leftChildIdx
+            }
+            }
+            if(rightChildIdx < length){
+                rightChild = this.values[rightChildIdx];
+                if(rightChild > element && rightChild > leftChild){
+                    swap = rightChildIdx
+                }
+            }
+            if(swap === null) break;
+            this.values[idx] = this.values[swap];
+            this.values[swap] = element;
+            idx = swap;
+         }
+    }
+
 }
 
 const Heep = new maxHeep()
